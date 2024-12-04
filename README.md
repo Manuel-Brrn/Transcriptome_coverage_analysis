@@ -7,14 +7,7 @@ Give the depth per position per individual, one file per individual
 Give the depth per position on each position for all individuals, create one file
 
 # Script 2
-
-
-
-
-depth_per_position_TrEx.sh
-give the depth per position per individual, one file per individual
-
-sum_individuals_01_00.sh
+### sum_individuals_01_00.sh
 sum the two bams corresponding to one individual
 
 covered_positions.sh
