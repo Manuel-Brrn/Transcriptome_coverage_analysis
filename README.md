@@ -23,11 +23,15 @@ Colle la colonne depth de tous les individus dans un même fichier
 ## Sélection des positions avec un seuil de couverture minimum
 ## Une position est couverte si au moins 7 individus ont 10 reads
 ### covered_positions.sh
-retain all position where at least 7 individuals have 10 reads
-and create a table with number of position covered per contig and the % it represents
+retain all position where at least 7 individuals have 10 reads -> one file
+and create a table with number of position covered per contig and the % it represents -> one file
 
-mean_depth_per_position_covered.sh
+
+# Script 4
+## calcul de la moyenne des positions couvertes
+### mean_depth_per_position_covered.sh
 create a table with the mean depth per position covered
+
 
 percentage_coverage.sh
 create a table with the number of contigs covered by 10 to 100% (step of 10%) of positon with at least 10 reads for 7 individuals
