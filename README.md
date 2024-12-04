@@ -59,7 +59,8 @@ add the contigs without any positions covered
 ## delete_duplicates.sh
 delete contigs duplicated added with precedent script
 
-order_contigs.sh
+# Script 10
+## order_contigs.sh
 sort the contigs in the same order than initially
 
 add_column_total_position.sh
