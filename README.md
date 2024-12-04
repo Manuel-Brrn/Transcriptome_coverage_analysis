@@ -1,4 +1,5 @@
 # Script 1
+## Obtenir la depth par position
 
 ### depth_per_position_TrEx.sh
 Give the depth per position per individual, one file per individual
@@ -7,8 +8,13 @@ Give the depth per position per individual, one file per individual
 Give the depth per position on each position for all individuals, create one file
 
 # Script 2
+## Traitement des individus ayant plusieurs fichiers
 ### sum_individuals_01_00.sh
 sum the two bams corresponding to one individual
+
+## Formattage pour obtenir une table avec tous les individus 
+### add_tab.sh
+Rajoute une tab entre chaque colonne
 
 covered_positions.sh
 retain all position where at least 7 individuals have 10 reads
