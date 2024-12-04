@@ -67,6 +67,11 @@ sort the contigs in the same order than initially
 ## add_column_total_position.sh
 add the column of the total number of position per contig
 
-table_number_contigs_per_depth_coverage.sh
+# Script 12
+## table_number_contigs_per_depth_coverage.sh
 create a table giving the number of contigs covered by x% of position with at least 10 reads on 7 individuals, at x depth
+
+## table_percentage_contigs_per_depth_coverage.sh
+create a table giving the % of contigs covered by x% of position with at least 10 reads on 7 individuals, at x depth
+
 
