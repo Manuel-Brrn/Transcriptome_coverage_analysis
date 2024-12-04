@@ -1,9 +1,15 @@
-# Transcriptome_coverage_analysis
+# Script 1
 
-List of scripts used to study the coverage of transcriptome TrEx and TrMO for species Urartu
+### depth_per_position_TrEx.sh
+Give the depth per position per individual, one file per individual
 
-depth_per_position_TrEx_all_individuals.sh
-give the depth per position on each position for all individuals
+### depth_per_position_TrEx_all_individuals.sh
+Give the depth per position on each position for all individuals, create one file
+
+# Script 2
+
+
+
 
 depth_per_position_TrEx.sh
 give the depth per position per individual, one file per individual
