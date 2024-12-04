@@ -1,3 +1,5 @@
+# Script for TrEx
+
 # Script 1
 ## Obtenir la depth par position
 
@@ -26,17 +28,27 @@ Colle la colonne depth de tous les individus dans un même fichier
 retain all position where at least 7 individuals have 10 reads -> one file
 and create a table with number of position covered per contig and the % it represents -> one file
 
-
 # Script 4
+## calcul du % de coverage par contig 
+### percentage_coverage.sh
+create a table with the number of contigs covered by 10 to 100% (step of 10%) of positon with at least 10 reads for 7 individuals
+
+# Script 5 
+## notation du nombre de position retenues 
+# position_retained.sh
+create a table with the number of position retained and the % it represents
+
+# Script 6
 ## calcul de la moyenne des positions couvertes
 ### mean_depth_per_position_covered.sh
 create a table with the mean depth per position covered
 
+## calcul de la moyenne de toutes les positions
+### mean_depth_per_position.sh
+create a table with the mean depth per position 
 
-percentage_coverage.sh
-create a table with the number of contigs covered by 10 to 100% (step of 10%) of positon with at least 10 reads for 7 individuals
-
-calcul_nbr_positions_covered_per_contigs_per_depth.sh
+# Script 7
+## calcul_nbr_positions_covered_per_contigs_per_depth.sh
 create a table with the number of position covered per depth treshold for each contigs
 
 add_non_covered_contigs.sh
