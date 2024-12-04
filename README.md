@@ -19,9 +19,12 @@ Rajoute une tab entre chaque colonne
 ### add_depth_column_individuals
 Colle la colonne depth de tous les individus dans un même fichier
 
-covered_positions.sh
+# Script 3
+## Sélection des positions avec un seuil de couverture minimum
+## Une position est couverte si au moins 7 individus ont 10 reads
+### covered_positions.sh
 retain all position where at least 7 individuals have 10 reads
-and create a table with number of position covered per contig and the % it represent
+and create a table with number of position covered per contig and the % it represents
 
 mean_depth_per_position_covered.sh
 create a table with the mean depth per position covered
