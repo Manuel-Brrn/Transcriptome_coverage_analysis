@@ -58,12 +58,13 @@ add the contigs without any positions covered
 # Script 9 
 ## delete_duplicates.sh
 delete contigs duplicated added with precedent script
-
+ 
 # Script 10
 ## order_contigs.sh
 sort the contigs in the same order than initially
 
-add_column_total_position.sh
+# Script 11
+## add_column_total_position.sh
 add the column of the total number of position per contig
 
 table_number_contigs_per_depth_coverage.sh
