@@ -51,10 +51,12 @@ create a table with the mean depth per position
 ## calcul_nbr_positions_covered_per_contigs_per_depth.sh
 create a table with the number of position covered per depth treshold for each contigs
 
-add_non_covered_contigs.sh
+# Script 8
+## add_non_covered_contigs.sh
 add the contigs without any positions covered
 
-delete_duplicates.sh
+# Script 9 
+## delete_duplicates.sh
 delete contigs duplicated added with precedent script
 
 order_contigs.sh
