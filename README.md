@@ -16,6 +16,9 @@ sum the two bams corresponding to one individual
 ### add_tab.sh
 Rajoute une tab entre chaque colonne
 
+### add_depth_column_individuals
+Colle la colonne depth de tous les individus dans un même fichier
+
 covered_positions.sh
 retain all position where at least 7 individuals have 10 reads
 and create a table with number of position covered per contig and the % it represent
