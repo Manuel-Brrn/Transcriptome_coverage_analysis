@@ -30,8 +30,8 @@ It align and compare contigs from different species and determine the best match
 
 Run BLASTN in both directions to compare contigs from the two species:
 
-blastn -query species1.fasta -subject species2.fasta -evalue 1e-50 -out species1_vs_species2.tab -outfmt 6 -num_threads 8
-blastn -query species2.fasta -subject species1.fasta -evalue 1e-50 -out species2_vs_species1.tab -outfmt 6 -num_threads 8
+        blastn -query species1.fasta -subject species2.fasta -evalue 1e-50 -out species1_vs_species2.tab -outfmt 6 -num_threads 8
+        blastn -query species2.fasta -subject species1.fasta -evalue 1e-50 -out species2_vs_species1.tab -outfmt 6 -num_threads 8
 
 Output:
 
