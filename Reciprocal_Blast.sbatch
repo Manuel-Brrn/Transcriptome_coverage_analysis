@@ -18,14 +18,15 @@ path_species="/home/barrientosm/projects/GE2POP/2024_TRANS_CWR/2024_MANUEL_BARRI
 
 species_1="$path_species/New_T_urartu_Tr246_URA09.fasta"
 species_2="$path_species/New_Ae_speltoides_Tr290_SPE10.fasta"
+output_dir="/home/barrientosm/projects/GE2POP/2024_TRANS_CWR/2024_MANUEL_BARRIENTOS/02_results/Blast/urartu_speltoides"
+
+species_1="$path_species/New_T_urartu_Tr246_URA09.fasta"
+species_2="$path_species/New_Ae_speltoides_Tr290_SPE10.fasta"
 
 # Run BLASTn for reciprocal alignments
-blastn -query $species_1 -subject $species_2 -evalue 1e-50 -out species1_vs_species2.tab -outfmt 6 -num_threads 8
-blastn -query $species_2 -subject $species_1 -evalue 1e-50 -out species2_vs_species1.tab -outfmt 6 -num_threads 8
+blastn -query $species_1 -subject $species_2 -evalue 1e-50 -out $output_dir/species1_vs_species2.tab -outfmt 6 -num_threads 8
+blastn -query $species_2 -subject $species_1 -evalue 1e-50 -out $output_dir/species2_vs_species1.tab -outfmt 6 -num_threads 8
 
-# Notes:
-# species1_vs_species2.tab : Alignments of contigs from species 1 against species 2.
-# species2_vs_species1.tab : Alignments of contigs from species 2 against species 1.
 
 # output blastn:
 # 1.     qseqid          query (e.g., gene) sequence id
