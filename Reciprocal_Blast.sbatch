@@ -12,7 +12,9 @@ cd /home/barrientosm/projects/GE2POP/2024_TRANS_CWR/2024_MANUEL_BARRIENTOS/02_re
 
 # Create an envirnment where Blast is installed, use of Conda
 source /nfs/work/agap_id-bin/img/snakemake/7.32.4/bin/activate base
-conda create -n blast_env
+if ! conda env list | grep -q "blast_env"; then
+    conda create -n blast_env -y
+fi
 conda activate blast_env
 
 # Define input FASTA file paths
