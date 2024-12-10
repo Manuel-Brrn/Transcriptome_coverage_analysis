@@ -42,7 +42,7 @@ Output:
 
 Use the provided Python script to find the best reciprocal matches:
 
-python reciprocal_best_hits.py species1_vs_species2.tab species2_vs_species1.tab 1 2 11 low RBH.tab
+        python reciprocal_best_hits.py species1_vs_species2.tab species2_vs_species1.tab 1 2 11 low RBH.tab
 
     Inputs:
         species1_vs_species2.tab: BLAST results for Species A vs. Species B.
