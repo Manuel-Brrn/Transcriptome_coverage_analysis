@@ -8,10 +8,12 @@
 #SBATCH --time=4:00:00
 #SBATCH --partition=agap_long
 
+cd /home/barrientosm/projects/GE2POP/2024_TRANS_CWR/2024_MANUEL_BARRIENTOS/02_results/Blast/urartu_speltoides
 
-# Load required modules
-module load bioinfo-cirad
-module load blast/marmadais
+# Create an envirnment where Blast is installed, use of Conda
+source /nfs/work/agap_id-bin/img/snakemake/7.32.4/bin/activate base
+conda create -n blast_env
+conda activate blast_env
 
 # Define input FASTA file paths
 path_species="/home/barrientosm/projects/GE2POP/2024_TRANS_CWR/2024_MANUEL_BARRIENTOS/data_RNAseq/Reference_individuals_fasta"
