@@ -38,19 +38,26 @@ fasta_files=(
     "/home/barrientosm/projects/GE2POP/REFERENCES/TRITICUM/SPELTOIDES_ORIGINAL/LI_2022_Accession_TS01/GCA_021437245.1_ASM2143724v1_genomic_modified.fasta"
     "/home/barrientosm/projects/GE2POP/REFERENCES/TRITICUM/SPELTOIDES_ORIGINAL/YANG_2023_Accession_SAMN25538077/Y2032_updata_reformatted.fasta"
     "/home/barrientosm/projects/GE2POP/2024_TRANS_CWR/2024_MANUEL_BARRIENTOS/01_raw_data/SPELTOIDES_GENOME_gff/speltoides_transcriptome_LI_2022_non_sorted.fasta"
-    "/home/barrientosm/projects/GE2POP/2024_TRANS_CWR/2024_MANUEL_BARRIENTOS/01_raw_data/SPELTOIDES_GENOME_gff/speltoides_transcriptome_YANG_2023.fasta")
+    "/home/barrientosm/projects/GE2POP/2024_TRANS_CWR/2024_MANUEL_BARRIENTOS/01_raw_data/SPELTOIDES_GENOME_gff/speltoides_transcriptome_YANG_2023.fasta"
+)
+
 # Define output file
 output_file="/home/barrientosm/projects/GE2POP/2024_TRANS_CWR/2024_MANUEL_BARRIENTOS/02_results/transcriptome_analysis_table.txt"
-# Write header to output file
-echo -e "File\tSequences_Number\tTotal_Length" > "$output_file"
+
+# Check if output file exists, if not create the file and write header
+if [ ! -f "$output_file" ]; then
+    echo -e "File\tSequences_Number\tTotal_Length" > "$output_file"
+fi
+
 # Loop through each FASTA file
 for fasta_file in "${fasta_files[@]}"; do
     # Initialize variables
     contig_count=0
     total_length=0
+    
     # Check if the file is compressed
     if [[ "$fasta_file" == *.gz ]]; then
-        # Count contigs and calculate total length for compressed file
+        # Count sequences and calculate total length for compressed file
         contig_count=$(zgrep -c "^>" "$fasta_file")
         total_length=$(zgrep -v "^>" "$fasta_file" | tr -d '\n' | wc -c)
     else
@@ -58,10 +65,13 @@ for fasta_file in "${fasta_files[@]}"; do
         contig_count=$(grep -c "^>" "$fasta_file")
         total_length=$(grep -v "^>" "$fasta_file" | tr -d '\n' | wc -c)
     fi
+    
     # Append results to output file
     echo -e "$(basename "$fasta_file")\t$contig_count\t$total_length" >> "$output_file"
+    
     # Print message to indicate completion for the current file
-    echo "Processed: $(basename "$fasta_file") - Contigs: $contig_count, Total Length: $total_length"
+    echo "Processed: $(basename "$fasta_file") - Sequences: $contig_count, Total Length: $total_length"
 done
+
 # Print final message
 echo "All files processed. Results saved to $output_file"
