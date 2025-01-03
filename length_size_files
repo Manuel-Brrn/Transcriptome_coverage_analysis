@@ -1,0 +1,67 @@
+#!/bin/bash
+#SBATCH --job-name=transcriptome_analysis
+#SBATCH --output=./log_%j_%x_out.txt
+#SBATCH --error=./log_%j_%x_err.txt
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem=8G
+#SBATCH --time=4:00:00
+#SBATCH --partition=
+
+# Transcriptome Analysis Script
+
+# This script processes multiple FASTA files containing transcriptomes and genomes of different species or different transcriptomes from the same species.
+# It calculates the total number of sequences and the total length of these sequences for each input file. The results are saved to a tab-delimited output file.
+
+## Purpose
+
+# Count the number of sequences in each FASTA file.
+# Calculate the total length of the sequences.
+# Process both compressed (`.gz`) and uncompressed FASTA files.
+# Output the results to a summary table.
+
+
+
+## Output
+
+# The script generates an output file with the following columns:
+# **File**: The name of the FASTA file.
+# **Sequences_Number**: The number of sequences in the file.
+# **Total_Length**: The total length of all the sequences in the file.
+
+# Define input FASTA files
+fasta_files=(
+    "/home/barrientosm/projects/GE2POP/2024_TRANS_CWR/2024_MANUEL_BARRIENTOS/data_RNAseq/Reference_individuals_fasta/New_T_urartu_Tr246_URA09.fasta"
+    "/home/barrientosm/scratch/GeCKO/Refs/New_Ae_speltoides_Tr290_SPE10.fasta"
+    "/home/barrientosm/projects/GE2POP/REFERENCES/TRITICUM/URARTU_ORIGINAL/urartu_transcriptome.fasta"
+    "/home/barrientosm/projects/GE2POP/REFERENCES/TRITICUM/URARTU_ORIGINAL/Triticum_urartu.IGDB.dna.toplevel.fa.gz"
+    "/home/barrientosm/projects/GE2POP/REFERENCES/TRITICUM/SPELTOIDES_ORIGINAL/LI_2022_Accession_TS01/GCA_021437245.1_ASM2143724v1_genomic_modified.fasta"
+    "/home/barrientosm/projects/GE2POP/REFERENCES/TRITICUM/SPELTOIDES_ORIGINAL/YANG_2023_Accession_SAMN25538077/Y2032_updata_reformatted.fasta"
+    "/home/barrientosm/projects/GE2POP/2024_TRANS_CWR/2024_MANUEL_BARRIENTOS/01_raw_data/SPELTOIDES_GENOME_gff/speltoides_transcriptome_LI_2022_non_sorted.fasta"
+    "/home/barrientosm/projects/GE2POP/2024_TRANS_CWR/2024_MANUEL_BARRIENTOS/01_raw_data/SPELTOIDES_GENOME_gff/speltoides_transcriptome_YANG_2023.fasta")
+# Define output file
+output_file="/home/barrientosm/projects/GE2POP/2024_TRANS_CWR/2024_MANUEL_BARRIENTOS/02_results/transcriptome_analysis_table.txt"
+# Write header to output file
+echo -e "File\tSequences_Number\tTotal_Length" > "$output_file"
+# Loop through each FASTA file
+for fasta_file in "${fasta_files[@]}"; do
+    # Initialize variables
+    contig_count=0
+    total_length=0
+    # Check if the file is compressed
+    if [[ "$fasta_file" == *.gz ]]; then
+        # Count contigs and calculate total length for compressed file
+        contig_count=$(zgrep -c "^>" "$fasta_file")
+        total_length=$(zgrep -v "^>" "$fasta_file" | tr -d '\n' | wc -c)
+    else
+        # Count sequences and calculate total length for uncompressed file
+        contig_count=$(grep -c "^>" "$fasta_file")
+        total_length=$(grep -v "^>" "$fasta_file" | tr -d '\n' | wc -c)
+    fi
+    # Append results to output file
+    echo -e "$(basename "$fasta_file")\t$contig_count\t$total_length" >> "$output_file"
+    # Print message to indicate completion for the current file
+    echo "Processed: $(basename "$fasta_file") - Contigs: $contig_count, Total Length: $total_length"
+done
+# Print final message
+echo "All files processed. Results saved to $output_file"
